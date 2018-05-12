@@ -17,6 +17,12 @@ const Logger = {
       type: 'UNIT',
     });
   },
+  log(message) {
+    Logger.events.push({
+      message,
+      type: 'MESSAGE',
+    });
+  },
 };
 
 export default Logger;

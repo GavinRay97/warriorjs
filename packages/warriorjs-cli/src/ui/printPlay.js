@@ -4,6 +4,7 @@ import printBoard from './printBoard';
 import printLevelHeader from './printLevelHeader';
 import printTurnHeader from './printTurnHeader';
 import printLogMessage from './printLogMessage';
+import printDebugMessage from './printDebugMessage';
 
 /**
  * Prints a play.
@@ -37,6 +38,14 @@ async function printPlay(levelNumber, events, delay) {
           boardOffset += 1;
         }
         printBoard(event.floor, boardOffset);
+        break;
+      }
+      case 'MESSAGE': {
+        const { message } = event;
+        if (message) {
+          printDebugMessage(message);
+          boardOffset += 1;
+        }
         break;
       }
       default:
