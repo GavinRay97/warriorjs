@@ -43,7 +43,7 @@ class PlayerLoader {
       const player = vm.runInContext('new Player();', this.sandbox, {
         timeout: playerCodeTimeout,
       });
-      player.say = (...messages) => Logger.log(messages);
+      player.say = (...messages) => Logger.log(messages.length > 1 ? messages : messages[0]);
       player.debug = (...args) => console.log(util.inspect(args, {showHidden: false, depth: null, colors: true}));
       assert(typeof player.playTurn === 'function', 'playTurn is not defined');
       return player;
